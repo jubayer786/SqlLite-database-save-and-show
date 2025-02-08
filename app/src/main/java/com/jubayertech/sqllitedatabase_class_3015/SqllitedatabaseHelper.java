@@ -40,7 +40,12 @@ public class SqllitedatabaseHelper extends SQLiteOpenHelper {
         database.insert("my_table",null,conval);
 
     }
+ public Cursor showData(){
+        SQLiteDatabase sqLiteDatabase=this.getReadableDatabase();
+        Cursor cursor= sqLiteDatabase.rawQuery("select *from my_table",null);
+        return cursor;
 
+    }
 
 
 
