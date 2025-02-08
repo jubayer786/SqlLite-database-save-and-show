@@ -1,5 +1,6 @@
 package com.jubayertech.sqllitedatabase_class_3015;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
@@ -17,8 +18,7 @@ import com.google.android.material.textfield.TextInputEditText;
 
 public class MainActivity extends AppCompatActivity {
     private TextInputEditText etText, etEmail;
-    MaterialButton btnSubmit;
-    TextView tvdisplay;
+    MaterialButton btnSubmit,btnshow;
 
     SqllitedatabaseHelper db_helper;
     @Override
@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         etText = findViewById(R.id.etText);
         etEmail = findViewById(R.id.etEmail);
         btnSubmit=findViewById(R.id.btnSubmit);
-        tvdisplay=findViewById(R.id.tvdisplay);
+        btnshow=findViewById(R.id.btnshow);
         db_helper=new SqllitedatabaseHelper(MainActivity.this,"my_database",null,1);
 
         btnSubmit.setOnClickListener(new View.OnClickListener() {
@@ -54,26 +54,22 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+        btnshow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this,Show_data.class));
+            }
+        });
         //========show data
 
-        Cursor cursor= db_helper.getWritableDatabase().rawQuery("select * from my_table",null);
-
-        tvdisplay.setText("Total Data\n"+cursor.getCount());
-
-        while (cursor.moveToNext()){
-            int id=cursor.getInt(0);
-            String name=cursor.getString(1);
-            String eEmail=cursor.getString(2);
-
-
-            tvdisplay.append("\n\nID: "+id+"\nName : "+name+"\nEmail : "+eEmail);
-        }
-
-
-
-
-
-
-
     }
+
+
+
+
+
+
+
+
 }
