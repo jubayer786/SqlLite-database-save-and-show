@@ -30,7 +30,7 @@ public class Show_data extends AppCompatActivity {
             int id=cursor.getInt(0);
             String name=cursor.getString(1);
             String eEmail=cursor.getString(2);
-
+//ha
 
             tvdisplay.append("\n\nID: "+id+"\nName : "+name+"\nEmail : "+eEmail);
         }
