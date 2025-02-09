@@ -46,6 +46,20 @@ public class SqllitedatabaseHelper extends SQLiteOpenHelper {
         return cursor;
 
     }
+public Cursor searchData(int id){
+    SQLiteDatabase sqLiteDatabase=this.getReadableDatabase();
+   Cursor cursor= sqLiteDatabase.rawQuery("select *from my_table where id like '"+id+"'",null);
+   // Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM my_table WHERE column_name LIKE 'a%' COLLATE NOCASE", null);
+
+    return cursor;
+}
+//যা ডাটা প্রয়োজন oi hisebe oi method show data te call korlay hoye jabe
+    public Cursor searchDataby_name(String name){
+        SQLiteDatabase sqLiteDatabase=this.getReadableDatabase();
+        Cursor cursor= sqLiteDatabase.rawQuery("select *from my_table where id like '%"+name+"%'",null);
+        // Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM my_table WHERE column_name LIKE 'a%' COLLATE NOCASE", null);
+        return cursor;
+    }
 
 
 
