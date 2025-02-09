@@ -22,8 +22,10 @@ public class Show_data extends AppCompatActivity {
         tvdisplay=findViewById(R.id.tvdisplay);
         db_helper=new SqllitedatabaseHelper(Show_data.this,"my_database",null,1);
 
-        Cursor cursor= db_helper.getWritableDatabase().rawQuery("select * from my_table",null);
-
+     //   Cursor cursor= db_helper.getWritableDatabase().rawQuery("select * from my_table",null);
+  //  Cursor cursor= db_helper.getReadableDatabase().query("select * from my_table",null);
+     //   Cursor cursor= db_helper.getWritableDatabase().rawQuery("select * from my_table",null);
+        Cursor cursor=db_helper.showData();
         tvdisplay.setText("Total Data\n"+cursor.getCount());
 
         while (cursor.moveToNext()){
